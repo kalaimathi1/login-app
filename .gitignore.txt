@@ -1,0 +1,10 @@
+# Maven / Java build outputs
+**/target/
+*.class
+# IDE
+.idea/
+.vscode/
+*.iml
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,29 @@
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Maven Wrapper startup script for POSIX
+# ----------------------------------------------------------------------------
+
+set -e
+
+BASE_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+WRAPPER_DIR="$BASE_DIR/.mvn/wrapper"
+WRAPPER_JAR="$WRAPPER_DIR/maven-wrapper.jar"
+WRAPPER_PROPERTIES="$WRAPPER_DIR/maven-wrapper.properties"
+
+if [ ! -f "$WRAPPER_PROPERTIES" ]; then
+  echo "Missing $WRAPPER_PROPERTIES" >&2
+  exit 1
+fi
+
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "Missing $WRAPPER_JAR" >&2
+  exit 1
+fi
+
+JAVA_EXE="java"
+if [ -n "$JAVA_HOME" ]; then
+  JAVA_EXE="$JAVA_HOME/bin/java"
+fi
+
+exec "$JAVA_EXE" $MAVEN_OPTS -classpath "$WRAPPER_JAR" "-Dmaven.multiModuleProjectDirectory=$BASE_DIR" org.apache.maven.wrapper.MavenWrapperMain "$@"
+
